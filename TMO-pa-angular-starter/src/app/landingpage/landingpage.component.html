@@ -2,12 +2,12 @@
 <br />
 <br />
 <div *ngIf="!recipes.length">
-        <li>There are no recipes to list</li>
+        <p>There are no recipes to list</p>
 </div>
 <div *ngIf="recipes.length > 0">
     <li *ngFor="let recipe of recipes">
-        Recipe-Name: {{recipe.name}}
-        Instructions: {{recipe.instructions}}
+        recipe-name: {{recipe.name}}
+        recipe-instructions : {{recipe.instructions}}
     </li>
 </div>
 <br />
