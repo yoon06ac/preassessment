@@ -24,19 +24,22 @@ export class LandingpageComponent {
   openDialog(): void {
     const dialogRef = this.dialog.open(recipeDialog, {
       width:'25%',
-      //data: {name: this.name, instructions: this.instructions,}
+      data: {name: this.name, instructions: this.instructions,}
     });
     dialogRef.afterClosed().subscribe((result: {name: string, instructions: string}) => {
       this.recipes.push({name: result.name, instructions: result.instructions});
+      console.log('printing the recipes', this.recipes)
+      console.log('printing the result', result)
     })
   }
 }
 
 @Component({
   selector: 'dialog-recipe-dialog',
-  templateUrl: 'addRecipeDialog.html',
+  templateUrl: './addRecipeDialog.html',
 })
 export class recipeDialog {
+
   constructor(
     public dialogRef: MatDialogRef<recipeDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}

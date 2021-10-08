@@ -1,16 +1,18 @@
-<h1 mat-dialog-title>Add a Recipe</h1>
+<h1 mat-dialog-title text-align="center">Add a Recipe</h1>
 
 <div mat-dialog-content>
-    <p>Add a Recipe</p>
-    <mat-form-field appearance="fill">
-        <mat-label>Recipe Name</mat-label>
-        <input matInput [(ngModel)]="data.name">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-        <mat-label>Recipe Instructions</mat-label>
-        <input matInput [(ngModel)]="data.instructions">
-    </mat-form-field>
+    <form>
+        <mat-form-field appearance="fill">
+            <mat-label>Recipe Name</mat-label>
+            <input matInput [(ngModel)]="data.name" name="recipe-name">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Recipe Instructions</mat-label>
+            <input matInput [(ngModel)]="data.instructions" name="recipe-instructions">
+        </mat-form-field>
+    </form>
 </div>
+
 <div mat-dialog-actions>
     <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>
     <button mat-button (click)="onCancelClick()">Cancel</button>
