@@ -1,13 +1,14 @@
 <h1>My Recipes</h1>
-<button mat-raised-button (click)="openDialog()">Add Recipes</button>
-<ng-template *ngIf="recipes.length > 0">
+<br />
+<br />
+<div *ngIf="!recipes.length">
+        <li>There are no recipes to list</li>
+</div>
+<div *ngIf="recipes.length > 0">
     <li *ngFor="let recipe of recipes">
         Recipe-Name: {{recipe.name}}
         Instructions: {{recipe.instructions}}
-
     </li>
-</ng-template>
-
-<ng-template *ngIf="recipes.length == 0">
-    <div>There are no recipes to list</div>>
-</ng-template>
+</div>
+<br />
+<button mat-raised-button (click)="openDialog()">Add Recipes</button>

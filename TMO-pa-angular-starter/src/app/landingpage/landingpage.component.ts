@@ -1,4 +1,4 @@
-import { Component, Inject} from '@angular/core';
+import { Component, Inject, ChangeDetectionStrategy, ChangeDetectorRef} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 export interface DialogData {
@@ -9,7 +9,8 @@ export interface DialogData {
 @Component({
   selector: 'app-landingpage',
   templateUrl: './landingpage.component.html',
-  styleUrls: ['./landingpage.component.css']
+  styleUrls: ['./landingpage.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LandingpageComponent {
 
@@ -18,7 +19,7 @@ export class LandingpageComponent {
   public instructions: string = '';
 
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog, private cd:ChangeDetectorRef
   ) { }
 
   openDialog(): void {
@@ -28,6 +29,7 @@ export class LandingpageComponent {
     });
     dialogRef.afterClosed().subscribe((result: {name: string, instructions: string}) => {
       this.recipes.push({name: result.name, instructions: result.instructions});
+      this.cd.detectChanges();
       console.log('printing the recipes', this.recipes)
       console.log('printing the result', result)
     })
